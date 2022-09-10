@@ -243,3 +243,26 @@ URL localhost:3000/sightings/3
 Select Body
 Select raw
 Select JSON
+
+$ Story 3: In order to see the wildlife sightings, as a user of the API, I need to run reports on animal sightings.
+
+Branch: animal-sightings-reports
+
+Acceptance Criteria
+
+Can see one animal with all its associated sightings
+Hint: Checkout this example on how to include associated records
+
+Can see all the all sightings during a given time period
+Hint: Your controller can use a range to look like this:
+
+class SightingsController < ApplicationController
+  def index
+    sightings = Sighting.where(date: params[:start_date]..params[:end_date])
+    render json: sightings
+  end
+end
+
+Hint: Be sure to add the start_date and end_date to what is permitted in your strong parameters method
+Hint: Utilize the params section in Postman to ease the developer experience
+Hint: Routes with params
